@@ -7,7 +7,7 @@
 		<?php else:;?>
 		<img src="<?= getAvatar($_SESSION['id_membre']) ?? 'img/defaut.jpg'?>">
 		<a class="button" href="?p=deconnect">Se déconnecter</a>
-		<a class="button" href="../index.php">Accueil</a>
+		<a class="button" href="../../index.php">Accueil</a>
 		<?php endif;?>
 	</div>
 </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "model/functions.php";
-
+require_once "../functions.php";
 
 $p= $_GET['p'] ?? "";
 var_dump($_GET);

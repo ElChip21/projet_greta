@@ -1,4 +1,4 @@
-<?php
+<?php /*
 
 // Connection à la base de données et renvoie l'objet PDO
 function connect() {
@@ -21,7 +21,7 @@ function connect() {
     } catch (Exception $e){
       echo $e->getMessage();
     }
-}
+}*/
 
 // Récupération d'un utilisateur à partir de son email
 function getUserByEmail($email) {

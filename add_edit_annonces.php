@@ -54,7 +54,7 @@ if (!empty($_POST)) {
 
         // Mise à jour des informations de l'annonce
         try {
-            // Préparation de la requête de mis à jour
+            // Préparation de la requête de mise à jour
             $updateAnnonceStmt = $db->prepare('UPDATE annonces SET  titre=:titre, description_annonces=:description_annonces, prix_vente=:prix_vente WHERE id_annonce=:id_annonce');
             // Exécution de la requête
            $updateAnnonceStmt->execute(['titre'=>$titre, 'description_annonces'=>$description_annonces, 'prix_vente'=>$prix_vente,'id_annonce'=>$id]);

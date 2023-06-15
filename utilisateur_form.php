@@ -2,7 +2,7 @@
 
 // Import des fonctions
 require_once 'functions.php';
-
+require_once "authentification/model/functions.php";
 // Pour éviter de dupliquer le code, ce formulaire sera utiliser pour créer ou modifier un membre. Si l'url est appelée avec id= alors nous l'utiliserons pour éditer le membre avec l'id spécifié. 
 if (isset($_GET['id'])) {
     // récupérer $id dans les paramètres d'URL
