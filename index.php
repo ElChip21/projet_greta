@@ -71,7 +71,8 @@ Recherche par mots clés:
 		<br><br>
 			<ul>
 				<li><a href="annonces_form.php">Ajouter une annonce</a></li>
-				<li><a href="Utilisateur.php">Modifier ses informations </a></li>
+				<?php if($_SESSION['is_admin']== true){  ?><li><a href="Utilisateur.php">Panneau d'administration (gérer les membres)</a></li><?php }else{  ?>
+					<li><a href="Utilisateur.php">Modifier ses informations </a></li><?php } ?>
 <div class="spacer"></div>
 </div>
 <div id="footer">

@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
     // Fermer la connection à la BDD
     $annonceQuery=null;
     $db=null;
-    var_dump($annonce['description_annonces']);
+    
 }
 
 ?>

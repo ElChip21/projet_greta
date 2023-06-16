@@ -1,4 +1,4 @@
-<?php/*
+<?php
 session_start();
 require_once 'functions.php';
 
@@ -17,7 +17,7 @@ if (!empty($_POST)) {
     // Connection à la BDD avec la fonction connect() dans functions.php
     $db = connect();
 
-    // Un membre n'a un ID que si ses infos sont déjà enregistrées en BDD, donc on vérifie s'il  le membre a un ID.
+    // Un membre n'a un ID que si ses infos sont déjà enregistrées en BDD, donc on vérifie si le membre a un ID.
     if (empty($_POST['id_membre'])) {
          // S'il n'y a pas d'ID, le membre n'existe pas dans la BDD donc on l'ajoute.
          try {
@@ -76,10 +76,10 @@ if (!empty($_POST)) {
 
     // Redirection vers la page principale des membres en passant le message et son type en variables GET
     header('location:' . 'Utilisateur.php?type=' . $type . '&message=' . $message);
-}*/
+}
 
 
-session_start();
+    /*session_start();
 require_once 'functions.php';
 require_once "authentification/model/functions.php";
 if (!empty($_POST)) {
@@ -98,7 +98,7 @@ if (!empty($_POST)) {
     $db = connect();
 
     // Vérification si l'utilisateur connecté est un administrateur
-    $is_admin = $_SESSION['is_admin'] ?? false;
+    $is_admin = $_SESSION['is_admin']==1 ?? false;
 
     if ($is_admin) {
         // L'utilisateur connecté est un administrateur, il peut modifier/supprimer tous les utilisateurs
@@ -109,7 +109,7 @@ if (!empty($_POST)) {
         // Vérification si l'ID de l'utilisateur est valide
         if (!$id) {
             // Redirection vers une page d'erreur ou une autre action appropriée
-            header('location: error.php');
+            header('location: index.php');
             exit(); // Arrêter l'exécution du script
         }
 
@@ -200,5 +200,5 @@ if (!empty($_POST)) {
 
     // Redirection vers la page principale des membres en passant le message et son type en variables GET
     header('location: Utilisateur.php?type=' . $type . '&message=' . $message);
-}
+}*/
 ?>

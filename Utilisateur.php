@@ -158,13 +158,12 @@ $utilisateur = getUtilisateurs();
                 <th scope='col'>code_postal</th>
                 <th scope='col'>ville</th>
                 <th scope='col'>email</th>
-                <th scope='col'>mot_de_passe</th>
                 <th scope='col'>date_naissance</th>
             </tr>
         </thead>
         <tbody>
         <?php foreach ($utilisateur as $utilisateurs) : ?>
-            <tr>
+            <?php if ($_SESSION['is_admin'] == true || ($_SESSION['id_membre'] == $utilisateurs['id_membre'])) : ?> <tr>
                 <td><?= $utilisateurs['id_membre'] ?></td>
                 <td><?= htmlentities($utilisateurs['nom']) ?></td>
                 <td><?= htmlentities($utilisateurs['prenom']) ?></td>
@@ -174,22 +173,21 @@ $utilisateur = getUtilisateurs();
                 <td><?= htmlentities($utilisateurs['code_postal']) ?></td>
                 <td><?= htmlentities($utilisateurs['ville']) ?></td>
                 <td><?= htmlentities($utilisateurs['email']) ?></td>
-                <td><?= htmlentities($utilisateurs['pwd']) ?></td>
                 <td><?= htmlentities($utilisateurs['date_naissance']) ?></td>
                 <td>
-                    <?php if ($_SESSION['is_admin'] === true || ($_SESSION['id_membre'] === $utilisateurs['id_membre'])) : ?>
+                   
                         <a class='btn btn-primary' href='utilisateur_form.php?id=<?= $utilisateurs['id_membre'] ?>' role='button'>Modifier</a>
                         <a class='btn btn-danger' href='delete_membres.php?id=<?= $utilisateurs['id_membre'] ?>' role='button'>Supprimer</a>
-                    <?php endif; ?>
+                   
                 </td>
-            </tr>
+            </tr> <?php endif; ?>
         <?php endforeach; ?>
         </tbody>
     </table>
 </div>
 <div class='row'>
     <div class='col'>
-        <?php if ($_SESSION['is_admin'] === true) : ?>
+        <?php if ($_SESSION['is_admin'] == true) : ?>
             <a class='btn btn-success' href='utilisateur_form.php' role='button'>Ajouter utilisateur</a>
         <?php endif; ?>
     </div>
