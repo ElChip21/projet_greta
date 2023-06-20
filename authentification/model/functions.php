@@ -216,7 +216,8 @@ function resetPwd() { $token=htmlspecialchars($_POST['token']);
     if($user){
         if (time()<$user['date_validite_token']){
             if ($_POST['pwd']===$_POST['pwd2']){
-                if(preg_match("/^(?=.\d)(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.*[\W]).{8,}$/", $_POST['pwd'])){                  $pwd=password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+                if(preg_match("/^(?=.\d)(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.*[\W]).{8,}$/", $_POST['pwd'])){                  
+                    $pwd=password_hash($_POST['pwd'], PASSWORD_DEFAULT);
                     try {
                         $db = connect();
                         $query=$db->prepare('UPDATE users SET token = NULL, pwd = :pwd, actif = 1 WHERE token= :token');
