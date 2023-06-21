@@ -124,7 +124,7 @@ function logUser() {
                 $_SESSION['username']=$user['username'];
                 $_SESSION['is_admin']=$user['is_admin'];
                return array("success", "Connexion réussie :)
-               ");               
+               ");
             }else return array("error", "Veuillez activer votre compte");
         }else return array("error", "Mauvais identifiants");
     }else return array("error", "Mauvais identifiants");

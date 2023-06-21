@@ -109,8 +109,28 @@ function getEtats() {
     }
 }
 
-
-
+function getAnnoncesByIdMembre($id){
+    try{
+        
+        if($_SESSION['is_admin']!==true){
+            $sql = 'WHERE id_utilisateur= :id_utilisateur';
+            $datas = ['id_utilisateur' => $id];
+        } else {
+            $sql = '';
+            $datas = '';
+        }
+        
+        
+        $db= connect();
+        $query=$db->prepare('SELECT annonces.id_annonce,annonces.titre,annonces.description_annonces,annonces.prix_vente,annonces.id_utilisateur,annonces.actif FROM annonces LEFT JOIN membres ON annonces.id_utilisateur = membres.id_membre '.$sql);
+        
+        $query->execute($datas);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+       
+    }catch (Exception $e) {
+        echo $e->getMessage();
+}
+}
 
 
 

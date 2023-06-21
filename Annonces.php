@@ -85,14 +85,14 @@ session_start();
 require_once 'functions.php';
 
 // Connexion à la BDD
-$annonce = getAnnonces();
-//$id_utilisateur = $_SESSION['id_membre'];
-//getAnnoncesByMembre($id_utilisateur);
+$id= $_SESSION['id_membre'];
+$annonce = getAnnoncesByIdMembre($id);
+var_dump($annonce);
 
-?>
 
-<?php require_once 'header.php'; ?>
-<?php require_once "authentification/model/functions.php"; ?>
+
+ require_once 'header.php';
+require_once "authentification/model/functions.php"; ?>
 
 <a href='index.php' class='btn btn-secondary m-2 active' role='button'>Accueil</a>
 <a href='Annonces.php' class='btn btn-secondary m-2 active' role='button'>Annonces</a>
@@ -120,6 +120,7 @@ $annonce = getAnnonces();
         <thead>
             <tr>
                 <th scope='col'>#</th>
+                <th scope='col'>id</th>
                 <th scope='col'>titre</th>
                 <th scope='col'>description_annonces</th>
                 <th scope='col'>prix_vente</th>
@@ -128,18 +129,22 @@ $annonce = getAnnonces();
         <tbody>
         <?php var_dump($_SESSION['is_admin']);
               var_dump($_SESSION['id_membre']);
-              
+         if(!empty($annonce) && is_array($annonce)){
+
          foreach ($annonce as $annonces) : 
-     if ($_SESSION['is_admin'] == true || $_SESSION['id_membre'] == $annonces['id_utilisateur']) : ?>
+             var_dump($annonce);
+     if ($_SESSION['is_admin'] == true || $_SESSION['id_membre'] == $annonces['id_utilisateur']) :
+     var_dump($annonces); ?>
             <tr>
                 <td><?= $annonces['id_annonce'] ?></td>
-                
+                <td><?=$annonces['id_utilisateur'] ?></td>
                 <td><?= htmlspecialchars($annonces['titre']) ?></td>
                 <td><?= htmlspecialchars($annonces['description_annonces']) ?></td>
                 <td><?= htmlspecialchars($annonces['prix_vente']) ?></td>
-                <td><?= htmlspecialchars($annonces['actif']) ?></td>
-                <td><?= $annonces['id_etat'] ?></td>
+                <td><?= htmlspecialchars($annonces['actif'] ?? "") ?></td>
+               
                 <td>
+                    
                     <a class='btn btn-primary' href='annonces_form.php?id=<?= $annonces['id_annonce'] ?>' role='button'>Modifier</a>
                     <?php if ($_SESSION['is_admin'] == true||$_SESSION['id_membre'] == $annonces['id_utilisateur']) : ?>
                         <a class='btn btn-danger' href='delete_annonces.php?id=<?= $annonces['id_annonce'] ?>' role='button'>Supprimer</a>
@@ -151,7 +156,10 @@ $annonce = getAnnonces();
             </tr>
       
     <?php endif; ?>
-<?php endforeach; ?>
+<?php endforeach; 
+
+                    } else echo 'aucun résultat';
+                    ?>
 
 
 

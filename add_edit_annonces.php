@@ -28,9 +28,9 @@ if (!empty($_POST)) {
          // S'il n'y a pas d'ID, l'annonce n'existe pas dans la BDD donc on l'ajoute.
          try {
             // Préparation de la requête d'insertion.
-            $createAnnonceStmt = $db->prepare('INSERT INTO annonces (titre, description_annonces, prix_vente) VALUES (:titre, :description_annonces, :prix_vente)');
+            $createAnnonceStmt = $db->prepare('INSERT INTO annonces (titre, description_annonces, prix_vente, id_utilisateur) VALUES (:titre, :description_annonces, :prix_vente, :id_utilisateur)');
             // Exécution de la requête
-            $createAnnonceStmt->execute(['titre'=>$titre, 'description_annonces'=>$description_annonces, 'prix_vente'=>$prix_vente]);
+            $createAnnonceStmt->execute(['titre'=>$titre, 'description_annonces'=>$description_annonces, 'prix_vente'=>$prix_vente,'id_utilisateur'=>$_SESSION['id_membre']]);
             // Vérification qu'une ligne a bien été impactée avec rowCount(). Si oui, on estime que la requête a bien été passée, sinon, elle a sûrement échoué.
             if ($createAnnonceStmt->rowCount()) {
                 // Une ligne a été insérée => message de succès
