@@ -16,6 +16,10 @@ if (isset($_GET['id'])) {
         // Execution de la requête
         $deleteMembreStmt->execute(['id_membre' => $id]);
     
+        $deleteAnnonceStmt = $db->prepare('DELETE FROM annonces WHERE id_annonce=:id_annonce');
+        // Execution de la requête
+        $deleteAnnonceStmt->execute(['id_annonce' => $id]);
+    
         // Vérification qu'une ligne a été impactée avec rowCount()
         if ($deleteMembreStmt->rowCount()) {
             // La ligne a été détruite, on envoie un message de succès

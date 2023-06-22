@@ -87,7 +87,7 @@ require_once 'functions.php';
 // Connexion à la BDD
 $id= $_SESSION['id_membre'];
 $annonce = getAnnoncesByIdMembre($id);
-var_dump($annonce);
+
 
 
 
@@ -132,9 +132,9 @@ require_once "authentification/model/functions.php"; ?>
          if(!empty($annonce) && is_array($annonce)){
 
          foreach ($annonce as $annonces) : 
-             var_dump($annonce);
+            
      if ($_SESSION['is_admin'] == true || $_SESSION['id_membre'] == $annonces['id_utilisateur']) :
-     var_dump($annonces); ?>
+   ?>
             <tr>
                 <td><?= $annonces['id_annonce'] ?></td>
                 <td><?=$annonces['id_utilisateur'] ?></td>
