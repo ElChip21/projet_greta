@@ -127,7 +127,19 @@ $utilisateur = getUtilisateurs();
 <?php require_once 'header.php' ?>
 
 <a href='index.php' class='btn btn-secondary m-2 active' role='button'>Accueil</a>
-<a href='utilisateur.php' class='btn btn-secondary m-2 active' role='button'>Utilisateurs</a>
+<?php if(empty($_SESSION['is_admin']) && $_SESSION['is_login']==TRUE){  ?>
+<a href='utilisateur.php' class='btn btn-secondary m-2 active' role='button'>Informations personnelles</a>
+<?php }else{ ?> 
+    <a href='utilisateur.php' class='btn btn-secondary m-2 active' role='button'>Informations utilisateurs</a>
+<?php } ?>
+
+    <a href='Annonces.php' class='btn btn-secondary m-2 active' role='button'>Gérer les Annonces</a>
+
+
+    
+<?php if($_SESSION['is_admin']==TRUE && $_SESSION['is_login']==TRUE){  ?>
+    <a href='etat.php' class='btn btn-secondary m-2 active' role='button'>Gérer les états</a>
+<?php } ?>
 
 <?php if (!empty($_GET['type']) && ($_GET['type'] === 'success')) : ?>
     <div class='row'>

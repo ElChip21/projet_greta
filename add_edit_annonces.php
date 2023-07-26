@@ -8,13 +8,7 @@ if (!empty($_POST)) {
         $titre = $_POST['titre'] ?? '';
         $description_annonces = $_POST['description_annonces'] ?? '';
         $prix_vente = $_POST['prix_vente'] ?? '';
-       // $cout_annonce = $_POST['cout_annonce'] ?? '';
-        //$date_validation = $_POST['date_validation'] ?? '';
-       // $date_fin_publication = $_POST['date_fin_publication'] ?? '';
-        //$id_etat = $_POST['id_etat'] ?? '';
-        //$id_utilisateur = $_POST['id_utilisateur'] ?? '';
-        //$date_vente = $_POST['date_vente'] ?? '';
-        //$id_acheteur = $_POST['id_acheteur'] ?? '';
+ 
     
 
     }

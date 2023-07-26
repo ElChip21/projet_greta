@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "functions.php";
 ?>
 
 <!-- déclaration aux navigateurs d'une page html5 -->
@@ -49,7 +50,15 @@ Recherche par mots clés:
 </div>
 <div id="column_right">
 <ul>
-
+<?php 
+connect();
+$annonce = getAnnonces();
+foreach ($annonce as $annonces) : ?>
+	<tr>
+			   <td>Titre: <?= htmlspecialchars($annonces['titre']) ?></td>
+			   <td>Description: <?= htmlspecialchars($annonces['description_annonces']) ?></td>
+			   <td>Prix: <?= htmlspecialchars($annonces['prix_vente']) ?></td><br><br>
+<?php endforeach; ?>
 
 			
 			

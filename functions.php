@@ -30,7 +30,7 @@ function getAnnonces() {
         // Récupération de l'objet PDO
         $db = connect();
 
-        // Requête pour récupérer tous les abos
+        // Requête pour récupérer toutes les annonces
         $annoncesQuery=$db->query('SELECT * FROM annonces');
 
         // Renvoie tous les lignes

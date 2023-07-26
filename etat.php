@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'functions.php';
+if($_SESSION['is_admin']==TRUE){
+
 
 
 
@@ -15,7 +17,12 @@ require_once 'functions.php';
 
 <a href='index.php' class='btn btn-secondary m-2 active' role='button'>Accueil</a>
 <a href='etat.php' class='btn btn-secondary m-2 active' role='button'>Etats</a>
-
+<?php if($_SESSION['is_admin']==TRUE && $_SESSION['is_login']==TRUE){  ?>
+    <a href='Utilisateur.php' class='btn btn-secondary m-2 active' role='button'>Gérer les utilisateurs</a>
+<?php } ?>
+<?php if($_SESSION['is_admin']==TRUE && $_SESSION['is_login']==TRUE){  ?>
+    <a href='Annonces.php' class='btn btn-secondary m-2 active' role='button'>Gérer les annonces</a>
+<?php } ?>
 <?php if (!empty($_GET['type']) && ($_GET['type'] === 'success')) : ?>
     <div class='row'>
         <div class='alert alert-success'>             
@@ -64,3 +71,9 @@ require_once 'functions.php';
 </div>
 
 <?php require_once 'footer.php' ?>
+<?php }else{
+
+?><h1> PAGE INTROUVABLE </h1>
+<a href='index.php' class='btn btn-secondary m-2 active' role='button'>retourner à l'accueil</a>
+
+<?php } ?>

@@ -96,7 +96,15 @@ require_once "authentification/model/functions.php"; ?>
 
 <a href='index.php' class='btn btn-secondary m-2 active' role='button'>Accueil</a>
 <a href='Annonces.php' class='btn btn-secondary m-2 active' role='button'>Annonces</a>
+<?php if($_SESSION['is_admin']==TRUE && $_SESSION['is_login']==TRUE){  ?>
+    <a href='Utilisateur.php' class='btn btn-secondary m-2 active' role='button'>Gérer les utilisateurs</a>
+<?php }else{  ?>
+        <a href='Utilisateur.php' class='btn btn-secondary m-2 active' role='button'>utilisateurs</a>
 
+<?php } ?>
+<?php if($_SESSION['is_admin']==TRUE && $_SESSION['is_login']==TRUE){  ?>
+    <a href='etat.php' class='btn btn-secondary m-2 active' role='button'>Gérer les états</a>
+<?php } ?>
 <?php if (!empty($_GET['type']) && ($_GET['type'] === 'success')) : ?>
     <div class='row'>
         <div class='alert alert-success'>
@@ -122,8 +130,8 @@ require_once "authentification/model/functions.php"; ?>
                 <th scope='col'>#</th>
                 <th scope='col'>id</th>
                 <th scope='col'>titre</th>
-                <th scope='col'>description_annonces</th>
-                <th scope='col'>prix_vente</th>
+                <th scope='col'>description de l'annonces</th>
+                <th scope='col'>prix de vente</th>
             </tr>
         </thead>
         <tbody>
